@@ -1,0 +1,20 @@
+apiVersion: "apps/v1beta1"
+kind: Deployment
+metadata:
+  name: 'gocd-server-deployment'
+  labels:
+    app: 'gocd-server-deployment'
+spec:
+  template:
+    metadata:
+      labels:
+        app: gocd-server
+    spec:
+      containers:
+        - name: go-server
+          image: gocd/gocd-server:v17.10.0
+          ports:
+            - containerPort: 8153
+              hostPort: 8153
+            - containerPort: 8154
+              hostPort: 8154

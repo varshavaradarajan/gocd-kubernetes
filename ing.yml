@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gocd-server-ingress
+spec:
+  backend:
+    serviceName: gocd-server-service
+    servicePort: 8153
+  rules:
+    - host: foo.go.cd
+      http:
+        paths:
+        - path: /*
+          backend:
+            serviceName: gocd-server-service
+            servicePort: 8153

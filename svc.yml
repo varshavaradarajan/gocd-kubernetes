@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: gocd-server-service
+  labels:
+    app: gocd-server-service
+spec:
+  selector:
+    app: gocd-server
+  type: NodePort
+  ports:
+  - protocol: TCP
+    name: 'http'
+    port: 8153
+  - protocol: TCP
+    name: 'https'
+    port: 8154
