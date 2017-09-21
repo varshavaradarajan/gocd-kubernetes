@@ -10,6 +10,10 @@ spec:
       labels:
         app: gocd-server
     spec:
+      volumes:
+        - name: godata-vol
+          persistentVolumeClaim:
+            claimName: godata-claim
       containers:
         - name: go-server
           image: gocd/gocd-server:v17.10.0
@@ -18,3 +22,6 @@ spec:
               hostPort: 8153
             - containerPort: 8154
               hostPort: 8154
+          volumeMounts:
+          - name: godata-vol
+            mountPath: /godata
