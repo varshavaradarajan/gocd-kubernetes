@@ -1,0 +1,19 @@
+apiVersion: "apps/v1beta1"
+kind: Deployment
+metadata:
+  name: 'gocd-agent-deployment'
+  labels:
+    app: 'gocd-agent-deployment'
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: gocd-agent
+    spec:
+      containers:
+        - name: go-server
+          image: gocd/gocd-agent-alpine-3.6:v17.10.0
+          env:
+          - name: "GO_SERVER_URL"
+            value: "https://192.168.99.102:31585/go"
